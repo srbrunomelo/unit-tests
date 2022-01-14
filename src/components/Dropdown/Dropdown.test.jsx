@@ -55,5 +55,12 @@ describe('Dropdown', () => {
     }) 
 
     userEvent.click(screen.getByRole('menuitem', { name: options[0]} )) 
+
+    expect(onSelect).toHaveBeenCalledWith(options[0])
+
+    options.map(option => {
+      expect(screen.queryByText(option)).not.toBeInTheDocument() 
+    })
+
   })
 })
